@@ -4,7 +4,7 @@ body {
     font-weight: bold;
     color: white;
     background-color: green;
-    background-image: url(https://cdn.discordapp.com/attachments/820605164431081474/994986019281711104/ESU_RL_Overlays_2.png);
+    background-image: url(https://media.discordapp.net/attachments/820605164431081474/1012333736051888248/ESU_Overlay_-_IG.png);
 }
 
 #scoreboard {
@@ -12,6 +12,10 @@ body {
     text-align: center;
     margin-left: 125px;
     margin-top: 50px;
+}
+
+#blueName, #orangeName {
+    visibility: hidden; /* Team names hidden because not needed for ESU package, can be used if needed */
 }
 
 #row1 {
@@ -112,7 +116,7 @@ body {
 }
 
 #specPlayerName {
-    font-size: 24pt;
+    font-size: 20pt;
     margin-top: -0.75rem;
     margin-left: 15px;
 }
@@ -121,6 +125,18 @@ body {
     width: 450px!important;
     padding-top: 10px;
     text-align: right;
+}
+
+#replayBox {
+    margin-top: -65px;
+    position: relative;
+    width:650px!important;
+    bottom: 0;
+    visibility: hidden;
+}
+
+#replayBox>.column {
+    text-align: center;
 }
 
 /* MIGHT NEED FOR LATER BUT PROBABLY NOT, ALSO HERE TO REMIND YOURSELF OF THE PAIN
