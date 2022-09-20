@@ -241,13 +241,13 @@
             percent: d['players'][team[1][i]['id']]['boost'],
             autoSuccess: false
           });
-          $(`#orangePlayer${i}`).text(d['players'][team[0][i]['id']]['name']);
-          $(`#orangeScore${i}`).text(d['players'][team[0][i]['id']]['score']);
-          $(`#orangeGoals${i}`).text(d['players'][team[0][i]['id']]['goals']);
-          $(`#orangeAsst${i}`).text(d['players'][team[0][i]['id']]['assists']);
-          $(`#orangeSaves${i}`).text(d['players'][team[0][i]['id']]['saves']);
-          $(`#orangeShots${i}`).text(d['players'][team[0][i]['id']]['shots']);
-          $(`#orangeDemos${i}`).text(d['players'][team[0][i]['id']]['demos']);
+          $(`#orangePlayer${i}`).text(d['players'][team[1][i]['id']]['name']);
+          $(`#orangeScore${i}`).text(d['players'][team[1][i]['id']]['score']);
+          $(`#orangeGoals${i}`).text(d['players'][team[1][i]['id']]['goals']);
+          $(`#orangeAsst${i}`).text(d['players'][team[1][i]['id']]['assists']);
+          $(`#orangeSaves${i}`).text(d['players'][team[1][i]['id']]['saves']);
+          $(`#orangeShots${i}`).text(d['players'][team[1][i]['id']]['shots']);
+          $(`#orangeDemos${i}`).text(d['players'][team[1][i]['id']]['demos']);
         }
       });
     });
