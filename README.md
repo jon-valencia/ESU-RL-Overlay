@@ -1,4 +1,7 @@
-# ESU IN-GAME ROCKET LEAGUE OVERLAY & SCOREBOARD 
+# ESU ROCKET LEAGUE OVERLAY & SCOREBOARD 
+
+## Overview
+This is a web-based Rocket League overlay and scoreboard made to replace Rocket League's own in-game spectator overlay. It is based off the [SOS Overlay System](https://gitlab.com/bakkesplugins/sos) which creates a websocket for Rocket League to connect and send data to so that it can be displayed in real-time through the overlay.
 
 ## Pre-reqs
 To get started, open a command prompt/powershell and type `node -v` to check if you have node installed. If it is not installed go to https://nodejs.org/en/ to download it so you can continue with setup. Next make sure to download [BakkesMod](https://bakkesmod.com/) as this will be what allows the in-game data to be displayed on the browser.
