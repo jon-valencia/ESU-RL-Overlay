@@ -139,6 +139,7 @@ body {
 
 #replayBox>.column {
     text-align: center;
+    vertical-align: middle;
 }
 
 /* MIGHT NEED FOR LATER BUT PROBABLY NOT, ALSO HERE TO REMIND YOURSELF OF THE PAIN
