@@ -4,7 +4,7 @@ body {
     font-weight: bold;
     color: white;
     background-color: green;
-    background-image: url(https://media.discordapp.net/attachments/820605164431081474/1012333736051888248/ESU_Overlay_-_IG.png);
+    background-image: url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927856709722/ESU_In_Game_Overlay_v2.png);
 }
 
 #scoreboard {
@@ -81,7 +81,7 @@ body {
     padding-right: 0;
 }
 
-.ui.grid [class*="left floated"].column {
+#boostBars [class*="left floated"].column {
     margin-right: 0;
 }
 
@@ -129,9 +129,9 @@ body {
 }
 
 #replayBox {
-    margin-top: -65px;
+    margin-top: -80px;
     position: relative;
-    width:625px!important;
+    width:650px!important;
     bottom: 0;
     visibility: hidden;
     font-size: 16pt;

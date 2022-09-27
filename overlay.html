@@ -111,13 +111,16 @@
       </div>
     </div>
   </div>
-  <div class="ui centered grid container" id="replayBox">
-    <div class="left floated column" id="goalPic"><img src="https://media.discordapp.net/attachments/820605164431081474/1004793158477021234/Scorer_logo.png"></div>
-    <div class="left floated column" id="goalScorer">USERNAME</div>
-    <div class="right floated column" id="assistPic"><img src="https://media.discordapp.net/attachments/820605164431081474/1004793158808379422/Assist_logo.png"></div>
-    <div class="column" id="goalAssister">USERNAME</div>
-    <div class="right floated column" id="ballSpeed">100KPH</div>
-    <div class="column"></div>
+  <div class="ui equal width grid container" id="replayBox">
+    <div class="column" id="goalPic">
+      <img style="vertical-align:top" src="https://media.discordapp.net/attachments/820605164431081474/1004793158477021234/Scorer_logo.png">
+      <div id="goalScorer">USERNAME</div>
+    </div>
+    <div class="column" id="assistPic">
+      <img style="vertical-align:middle" src="https://media.discordapp.net/attachments/820605164431081474/1004793158808379422/Assist_logo.png">
+      <div id="goalAssister">USERNAME</div>
+    </div>
+    <div class="column" id="ballSpeed">100KPH</div>
   </div>
   <script>
     const WsSubscribers = {
@@ -310,31 +313,43 @@
       });
       WsSubscribers.subscribe("game", "goal_scored", (d) => {
         let goalSpeed = Math.trunc(d['goalspeed']);
-        $('#goalScorer').text(d['scorer']['name']);
+        $('#goalScorer').css('display', 'inline');
+        $('#assistPic').css('display', 'inline');
+        $('#goalAssister').css('display', 'inline');
+        $('#goalScorer').text(`${d['scorer']['name']}`);
         $('#ballSpeed').text(goalSpeed + 'KPH');
         if (d['assister']['name'] != '') { 
-          $('#goalAssister').text(d['assister']['name']);
+          $('#goalAssister').text(`${d['assister']['name']}`);
           WsSubscribers.subscribe("game", "replay_start", () => {
-            $('body').css('background-image', 'url(https://media.discordapp.net/attachments/820605164431081474/1012333736379039744/ESU_Sample_Overlay_-_Replay.png)');
+            $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927449870510/ESU_Replay_Overlay_v2.png)');
             $('#replayBox').css('visibility', 'visible');
             $('#assistPic').css('visibility', 'visible');
             $('#goalAssister').css('visibility', 'visible');
           });
-        } else {
-          WsSubscribers.subscribe("game", "replay_start", () => {
-            $('body').css('background-image', 'url(https://media.discordapp.net/attachments/820605164431081474/1012333736379039744/ESU_Sample_Overlay_-_Replay.png)');
-            $('#replayBox').css('visibility', 'visible');
+          WsSubscribers.subscribe("game", "replay_end", () => {
+            $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927856709722/ESU_In_Game_Overlay_v2.png)');
+            $('#replayBox').css('visibility', 'hidden');
             $('#assistPic').css('visibility', 'hidden');
             $('#goalAssister').css('visibility', 'hidden');
           });
+        } else {
+          WsSubscribers.subscribe("game", "replay_start", () => {
+            $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927449870510/ESU_Replay_Overlay_v2.png)');
+            $('#replayBox').css('visibility', 'visible');
+            $('#assistPic').css('display', 'none');
+            $('#goalAssister').css('display', 'none');
+          });
+          WsSubscribers.subscribe("game", "replay_end", () => {              
+            $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927856709722/ESU_In_Game_Overlay_v2.png)');
+            $('#replayBox').css('visibility', 'hidden');
+            $('#assistPic').css('visibility', 'hidden');
+            $('#goalAssister').css('visibility', 'hidden');
+            $('#assistPic').css('visibility', 'hidden');
+            $('#goalAssister').css('visibility', 'hidden');
+            $('#assistPic').css('display', 'inline');
+            $('#goalAssister').css('display', 'inline');
+          });
         }
-        
-        WsSubscribers.subscribe("game", "replay_end", () => {
-          $('body').css('background-image', 'url(https://media.discordapp.net/attachments/820605164431081474/1012333736051888248/ESU_Overlay_-_IG.png)');
-          $('#replayBox').css('visibility', 'hidden');
-          $('#assistPic').css('visibility', 'hidden');
-          $('#goalAssister').css('visibility', 'hidden');
-        });
       });
       
     });
