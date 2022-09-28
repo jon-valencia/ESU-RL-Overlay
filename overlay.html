@@ -314,8 +314,6 @@
       WsSubscribers.subscribe("game", "goal_scored", (d) => {
         let goalSpeed = Math.trunc(d['goalspeed']);
         $('#goalScorer').css('display', 'inline');
-        $('#assistPic').css('display', 'inline');
-        $('#goalAssister').css('display', 'inline');
         $('#goalScorer').text(`${d['scorer']['name']}`);
         $('#ballSpeed').text(goalSpeed + 'KPH');
         if (d['assister']['name'] != '') { 
@@ -325,6 +323,8 @@
             $('#replayBox').css('visibility', 'visible');
             $('#assistPic').css('visibility', 'visible');
             $('#goalAssister').css('visibility', 'visible');
+            $('#assistPic').css('display', 'inline');
+            $('#goalAssister').css('display', 'inline');
           });
           WsSubscribers.subscribe("game", "replay_end", () => {
             $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927856709722/ESU_In_Game_Overlay_v2.png)');
