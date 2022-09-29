@@ -60,8 +60,8 @@ body {
     padding-bottom: 0;
 }
 
-#boostBars>.row>.column {
-    width: 180px;
+#boostBars>.column {
+    width: 225px;
 }
 
 #boostRow {
