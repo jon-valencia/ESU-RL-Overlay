@@ -39,10 +39,12 @@ body {
 
 .ui.progress {
     height: 12.5px;
+    margin-bottom: 2.25em;
+    margin-top: 0.25em;
 }
 
 .ui.progress .bar {
-    min-width: 0;
+    min-width: 0!important;
     background: white;
 }
 
@@ -60,8 +62,8 @@ body {
     padding-bottom: 0;
 }
 
-#boostBars>.column {
-    width: 225px;
+#boostBars>.row>.column {
+    width: 180px;
 }
 
 #boostRow {

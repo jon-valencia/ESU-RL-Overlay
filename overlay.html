@@ -32,38 +32,58 @@
     </div>
   </div>
   <div class="ui centered grid container" id="boostBars">
-    <div class="left floated black column">
+    <div class="row">
       <div class="left floated column" id="bluePlayer0">USERNAME1</div>
-      <div class="ui left floated progress" id="blueBoostBar0">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:right" id="blueBoost0">100</div>
+      <div class="right floated column"id="orangePlayer0">USERNAME1</div>
+    </div>
+    <div class="row" id="boostRow">
+      <div class="left floated column">
+        <div class="ui small progress" id="blueBoostBar0">
+          <div class="bar"></div>
+        </div>
       </div>
-      <div class="left floated column" id="bluePlayer1">USERNAME2</div>
-      <div class="ui left floated progress" id="blueBoostBar1">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:right" id="blueBoost1">100</div>
-      </div>
-      <div class="left floated column" id="bluePlayer2">USERNAME3</div>
-      <div class="ui left floated progress" id="blueBoostBar2">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:right" id="blueBoost2">100</div>
+      <div class="left floated column" id="blueBoost0">100</div>
+      <div class="right floated column" id="orangeBoost0">100</div>
+      <div class="column">
+        <div class="ui small progress" id="orangeBoostBar0">
+          <div class="bar"></div>
+        </div>
       </div>
     </div>
-    <div class="right floated black column">
-      <div id="orangePlayer0">USERNAME1</div>
-      <div class="ui right floated progress" id="orangeBoostBar0">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:left" id="orangeBoost0">100</div>
+    <div class="row">
+      <div class="left floated column" id="bluePlayer1">USERNAME2</div>
+      <div class="right floated column"id="orangePlayer1">USERNAME2</div>
+    </div>
+    <div class="row" id="boostRow">
+      <div class="left floated column">
+        <div class="ui small progress" id="blueBoostBar1">
+          <div class="bar"></div>
+        </div>
       </div>
-      <div id="orangePlayer1">USERNAME2</div>
-      <div class="ui right floated progress" id="orangeBoostBar1">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:left" id="orangeBoost1">100</div>
+      <div class="left floated column" id="blueBoost1">100</div>
+      <div class="right floated column" id="orangeBoost1">100</div>
+      <div class="column">
+        <div class="ui small progress" id="orangeBoostBar1">
+          <div class="bar"></div>
+        </div>
       </div>
-      <div id="orangePlayer2">USERNAME3</div>
-      <div class="ui right floated progress" id="orangeBoostBar2">
-        <div class="bar" style="display:inline"></div>
-        <div style="display:inline; text-align:top; float:left" id="orangeBoost2">100</div>
+    </div>
+    <div class="row">
+      <div class="left floated column" id="bluePlayer2">USERNAME3</div>
+      <div class="right floated column"id="orangePlayer2">USERNAME3</div>
+    </div>
+    <div class="row" id="boostRow">
+      <div class="left floated column">
+        <div class="ui small progress" id="blueBoostBar2">
+          <div class="bar"></div>
+        </div>
+      </div>
+      <div class="left floated column" id="blueBoost2">100</div>
+      <div class="right floated column" id="orangeBoost2">100</div>
+      <div class="column">
+        <div class="ui small progress" id="orangeBoostBar2">
+          <div class="bar"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -76,7 +96,7 @@
       <div class="column">Saves</div>
     </div>
     <div class="row" id="specPlayerStats">
-      <div class="left floated column" id="specPlayerName">USERNAME</div>
+      <div class="left floated column" id="specPlayerName">USERNAME00000000</div>
       <div class="right floated column" id="specPlayerScore">0</div>
       <div class="column" id="specPlayerGoals">0</div>
       <div class="column" id="specPlayerAssists">0</div>
@@ -331,7 +351,34 @@
           });
         }
       });
-      
+      $(document).ready(function() {
+        for (let i = 0; i < 3; i++) {
+          resize_to_fit(`#bluePlayer${i}`, 160);
+          resize_to_fit(`#orangePlayer${i}`, 160);
+        }
+        resize_to_fit(`#specPlayerName`, 185);
+        resize_to_fit(`#goalAssister`, 160);
+        resize_to_fit(`#goalScorer`, 160);
+        console.log(textWidth('#bluePlayer0'));
+      });
+      // recursive function to shrink font-size of selected element until it's width < width
+      function resize_to_fit(text, width) {
+        var fontsize = $(text).css('font-size');
+        $(text).css('fontSize', parseFloat(fontsize) - 1);
+
+        if (textWidth(text) >= width) {
+          resize_to_fit(text, width);
+        }
+      }
+      // calculate width of a given text string using <span>
+      function textWidth(text) {
+        var html_org = $(text).html();
+        var html_calc = '<span>' + html_org + '</span>';
+        $(text).html(html_calc);
+        var width = $(text).find('span:first').width();
+        $(text).html(html_org);
+        return width;
+      }
     });
   </script>
 </body>
