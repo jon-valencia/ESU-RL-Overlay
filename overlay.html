@@ -22,12 +22,12 @@
   <div class="ui grid" id="scoreboard">
     <div class="row" id="row1">
       <div class="two wide column" id="clock">2:47</div>
-      <div class="two wide column" id="blueName">VTU</div>
+      <div class="two wide column" id="blueName">VTU</div> 
       <div class="column" id="blueScore">10</div>
     </div>
     <div class="row" id="row2">
       <div class="two wide column"></div>
-      <div class="two wide column" id="orangeName">BER</div>
+      <div class="two wide column" id="orangeName">BER</div> 
       <div class="column" id="orangeScore">8</div>
     </div>
   </div>
@@ -249,8 +249,9 @@
         // Scoreboard + Timer + Team Names
         $('#blueScore').text(d['game']['teams'][0]['score']);
         $('#orangeScore').text(d['game']['teams'][1]['score']);
-        //$('#blueName').text(d['game']['teams'][0]['name']);
-        //$('#orangeName').text(d['game']['teams'][1]['name']);
+        //$('#blueName').text(d['game']['teams'][0]['name']); commented out names because of issue 
+        //$('#orangeName').text(d['game']['teams'][1]['name']); with super long team names
+
         let secs = d['game']['time_seconds'];
         let mins = Math.floor(secs / 60);
         let rSecs = secs - mins * 60;
