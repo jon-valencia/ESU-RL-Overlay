@@ -96,7 +96,7 @@
       <div class="column">Saves</div>
     </div>
     <div class="row" id="specPlayerStats">
-      <div class="left floated column" id="specPlayerName">USERNAME</div>
+      <div class="left floated column" id="specPlayerName">USERNAME00000000</div>
       <div class="right floated column" id="specPlayerScore">0</div>
       <div class="column" id="specPlayerGoals">0</div>
       <div class="column" id="specPlayerAssists">0</div>
@@ -251,6 +251,7 @@
         $('#orangeScore').text(d['game']['teams'][1]['score']);
         //$('#blueName').text(d['game']['teams'][0]['name']); commented out names because of issue 
         //$('#orangeName').text(d['game']['teams'][1]['name']); with super long team names
+
         let secs = d['game']['time_seconds'];
         let mins = Math.floor(secs / 60);
         let rSecs = secs - mins * 60;
@@ -273,6 +274,7 @@
           });
           $(`#bluePlayer${i}`).text(d['players'][team[0][i]['id']]['name']);
           $(`#blueBoost${i}`).text(d['players'][team[0][i]['id']]['boost']);
+          resize_to_fit(`#bluePlayer${i}`, 160);
         }
         // orange
         for (let i = 0; i < 3; i++) {
@@ -282,6 +284,7 @@
           });
           $(`#orangePlayer${i}`).text(d['players'][team[1][i]['id']]['name']);
           $(`#orangeBoost${i}`).text(d['players'][team[1][i]['id']]['boost']);
+          resize_to_fit(`#orangePlayer${i}`, 160);
         }
 
         // Displays the stats of the player being spectated
@@ -290,7 +293,7 @@
         }
         else {
           $('#specPlayer').css('visibility', 'visible');
-
+          resize_to_fit(`#specPlayerName`, 185);
           // Change boost bar color based on team that is being spectated
           $('#specPlayerName').text(d['players'][d['game']['target']]['name']);
           $('#specPlayerScore').text(d['players'][d['game']['target']]['score']);
@@ -315,6 +318,7 @@
         let goalSpeed = Math.trunc(d['goalspeed']);
         $('#goalScorer').css('display', 'inline');
         $('#goalScorer').text(`${d['scorer']['name']}`);
+        resize_to_fit(`#goalScorer`, 160);
         $('#ballSpeed').text(goalSpeed + 'KPH');
         if (d['assister']['name'] != '') { 
           $('#goalAssister').text(`${d['assister']['name']}`);
@@ -325,6 +329,7 @@
             $('#goalAssister').css('visibility', 'visible');
             $('#assistPic').css('display', 'inline');
             $('#goalAssister').css('display', 'inline');
+            resize_to_fit(`#goalAssister`, 160);
           });
           WsSubscribers.subscribe("game", "replay_end", () => {
             $('body').css('background-image', 'url(https://cdn.discordapp.com/attachments/820605164431081474/1024307927856709722/ESU_In_Game_Overlay_v2.png)');
@@ -351,7 +356,34 @@
           });
         }
       });
-      
+      $(document).ready(function() {
+        for (let i = 0; i < 3; i++) {
+          resize_to_fit(`#bluePlayer${i}`, 160);
+          resize_to_fit(`#orangePlayer${i}`, 160);
+        }
+        resize_to_fit(`#specPlayerName`, 185);
+        resize_to_fit(`#goalAssister`, 160);
+        resize_to_fit(`#goalScorer`, 160);
+        console.log(textWidth('#bluePlayer0'));
+      });
+      // recursive function to shrink font-size of selected element until it's width < width
+      function resize_to_fit(text, width) {
+        var fontsize = $(text).css('font-size');
+
+        if (textWidth(text) >= width) {
+          $(text).css('fontSize', parseFloat(fontsize) - 1);
+          resize_to_fit(text, width);
+        }
+      }
+      // calculate width of a given text string using <span>
+      function textWidth(text) {
+        var html_org = $(text).html();
+        var html_calc = '<span>' + html_org + '</span>';
+        $(text).html(html_calc);
+        var width = $(text).find('span:first').width();
+        $(text).html(html_org);
+        return width;
+      }
     });
   </script>
 </body>
