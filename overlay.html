@@ -96,7 +96,7 @@
       <div class="column">Saves</div>
     </div>
     <div class="row" id="specPlayerStats">
-      <div class="left floated column" id="specPlayerName">USERNAME00000000</div>
+      <div class="left floated column" id="specPlayerName">USERNAME</div>
       <div class="right floated column" id="specPlayerScore">0</div>
       <div class="column" id="specPlayerGoals">0</div>
       <div class="column" id="specPlayerAssists">0</div>
@@ -293,7 +293,7 @@
         }
         else {
           $('#specPlayer').css('visibility', 'visible');
-          resize_to_fit(`#specPlayerName`, 185);
+          resize_to_fit(`#specPlayerName`, 215);
           // Change boost bar color based on team that is being spectated
           $('#specPlayerName').text(d['players'][d['game']['target']]['name']);
           $('#specPlayerScore').text(d['players'][d['game']['target']]['score']);
@@ -361,7 +361,7 @@
           resize_to_fit(`#bluePlayer${i}`, 160);
           resize_to_fit(`#orangePlayer${i}`, 160);
         }
-        resize_to_fit(`#specPlayerName`, 185);
+        resize_to_fit(`#specPlayerName`, 215);
         resize_to_fit(`#goalAssister`, 160);
         resize_to_fit(`#goalScorer`, 160);
         console.log(textWidth('#bluePlayer0'));
