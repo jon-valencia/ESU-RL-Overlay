@@ -30,9 +30,9 @@
         <div class="column" id="bluePlayer1">USERNAME</div>
         <div class="column" id="bluePlayer2">USERNAME</div>
         <div class="two wide column"></div>
-        <div class="column" id="orangePlayer0">JoeyUltra4973</div>
-        <div class="column" id="orangePlayer1">PsychoPancake77</div>
-        <div class="column" id="orangePlayer2">craftingdead559</div>
+        <div class="column" id="orangePlayer0">USERNAME</div>
+        <div class="column" id="orangePlayer1">USERNAME</div>
+        <div class="column" id="orangePlayer2">USERNAME</div>
     </div>
     <div class="row">
         <div class="column" id="blueScore0">0</div>
@@ -234,6 +234,7 @@
           $(`#blueSaves${i}`).text(d['players'][team[0][i]['id']]['saves']);
           $(`#blueShots${i}`).text(d['players'][team[0][i]['id']]['shots']);
           $(`#blueDemos${i}`).text(d['players'][team[0][i]['id']]['demos']);
+          resize_to_fit(`#bluePlayer${i}`, 185);
         }
         // orange
         for (let i = 0; i < 3; i++) {
@@ -248,20 +249,21 @@
           $(`#orangeSaves${i}`).text(d['players'][team[1][i]['id']]['saves']);
           $(`#orangeShots${i}`).text(d['players'][team[1][i]['id']]['shots']);
           $(`#orangeDemos${i}`).text(d['players'][team[1][i]['id']]['demos']);
+          resize_to_fit(`#orangePlayer${i}`, 185);
         }
       });
       $(document).ready(function() {
-        for (let i = 0; i < 3; i++) {
-          resize_to_fit(`#bluePlayer${i}`, 160);
-          resize_to_fit(`#orangePlayer${i}`, 160);
-        }
+        /*for (let i = 0; i < 3; i++) {
+          resize_to_fit(`#bluePlayer${i}`, 185);
+          resize_to_fit(`#orangePlayer${i}`, 185);
+        }*/
       });
-      // recursive function to shrink font-size of selected element until width < column.width()
+      // recursive function to shrink font-size of selected element until it's width < width
       function resize_to_fit(text, width) {
         var fontsize = $(text).css('font-size');
-        $(text).css('fontSize', parseFloat(fontsize) - 1);
 
         if (textWidth(text) >= width) {
+          $(text).css('fontSize', parseFloat(fontsize) - 1);
           resize_to_fit(text, width);
         }
       }
