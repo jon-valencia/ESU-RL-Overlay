@@ -123,6 +123,11 @@
     <div class="column" id="ballSpeed">100KPH</div>
   </div>
   <script>
+    /***************************************************************************************
+    *    Title: SOS Plugin 
+    *    Availability: https://gitlab.com/bakkesplugins/sos
+    *    Lines: 131-250
+    ***************************************************************************************/
     const WsSubscribers = {
       __subscribers: {},
       websocket: undefined,
@@ -243,6 +248,8 @@
         }
       }
     };
+    
+    
     $(() => {
       WsSubscribers.init(49322, true);
       WsSubscribers.subscribe("game", "update_state", (d) => {
