@@ -74,6 +74,7 @@ body {
 #orangeBoost0, #orangeBoost1, #orangeBoost2,
 #orangeBoostBar0, #orangeBoostBar1, #orangeBoostBar2 {
     text-align: right;
+    float: right;
 }
 
 #blueBoost0, #blueBoost1, #blueBoost2, 
@@ -92,7 +93,7 @@ body {
     width: 520px!important;
     position: relative;
     bottom: 0;
-    visibility: hidden;
+    visibility: visible;
 }
 
 #specPlayer>.row {
@@ -122,6 +123,7 @@ body {
     font-size: 20pt;
     margin-top: -0.75rem;
     margin-left: 15px;
+    display: inline!important;
 }
 
 #specPlayerBar {
