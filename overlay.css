@@ -74,6 +74,9 @@ body {
 #orangeBoost0, #orangeBoost1, #orangeBoost2,
 #orangeBoostBar0, #orangeBoostBar1, #orangeBoostBar2 {
     text-align: right;
+}
+
+#orangePlayer0, #orangePlayer1, #orangePlayer2 {
     float: right;
 }
 
